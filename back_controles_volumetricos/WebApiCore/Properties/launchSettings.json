@@ -1,0 +1,38 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:56131/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "DefaultConnection": "Server=10.230.226.227;Database=covol;User Id=sa;Password=saSQL2014; MultipleActiveResultSets=True",
+        "ASPNETCORE_ENVIRONMENT ": "Development"
+      }
+    },
+    "WebApiCore": {
+      "commandName": "Project",
+      "environmentVariables": {
+        //"ASPNETCORE_ENVIRONMENT": "Development",
+        "COVOL_DB_SQL": "covol",
+        "COVOL_USER_SQL": "sa",
+        "COVOL_DATASOURCE_SQL": "192.168.99.100",
+        "OauthUri": "https://authapidev.mat.sat.gob.mx",
+        "DefaultConnection": "Server=sqlserver2016-covol.crybibpakeht.us-east-2.rds.amazonaws.com;Database=covol;User Id=usqls_ape1_covol;Password=usqls_covol19; ",
+        "COVOL_PASSWORD_SQL": "saSQL2017"
+      },
+      "applicationUrl": "http://localhost:56133/"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values"
+    }
+  }
+}

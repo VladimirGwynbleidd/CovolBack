@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WebApiCoreTest": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DefaultConnection": "Server=sqlserver2016-covol.crybibpakeht.us-east-2.rds.amazonaws.com;Database=covol;User Id=usqls_ape1_covol;Password=usqls_covol19; "
+      }
+    }
+  }
+}

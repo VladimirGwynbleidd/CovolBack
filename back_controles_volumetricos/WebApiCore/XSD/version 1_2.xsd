@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
+<xs:schema xmlns:controlesvolumetricos="http://www.sat.gob.mx/esquemas/controlesvolumetricos" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sat.gob.mx/esquemas/controlesvolumetricos" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ControlesVolumetricos">
+		<xs:annotation>
+			<xs:documentation>Estándar de Controles Volumétricos.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="EXI" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="numeroTanque" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el número de identificación del tanque.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="1"/>
+									<xs:maxInclusive value="99"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="claveProducto" type="controlesvolumetricos:t_claveProductos" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la clave del producto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="claveSubProducto" type="controlesvolumetricos:t_subproductos" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la clave del subproducto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="composicionOctanajeDeGasolina" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el índice de octano de la gasolina.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="87"/>
+									<xs:maxInclusive value="99"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="gasolinaConEtanol" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar si la gasolina contiene etanol.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Sí"/>
+									<xs:enumeration value="No"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="composicionDeEtanolEnGasolina" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el porcentaje de etanol contenido en  la gasolina.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:fractionDigits value="2"/>
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="10"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="otros" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el tipo de combustible cuando en el atributo claveSubProducto se indique el valor otros.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="marca" type="controlesvolumetricos:t_claveMarca" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo opcional para expresar la marca del subproducto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="volumenUtil" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la cantidad de producto que puede salir por ventas (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="volumenFondaje" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el volumen de fondaje del tanque (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="volumenAgua" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el volumen de agua (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="volumenDisponible" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el volumen disponible (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="volumenExtraccion" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la cantidad de producto que ha salido a partir de la medición anterior (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="volumenRecepcion" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la cantidad de producto recibido por el proveedor del producto desde la medición anterior (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="temperatura" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la temperatura del tanque (cantidad expresada en grados centígrados).</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:maxInclusive value="70.00"/>
+									<xs:minInclusive value="-40.00"/>
+									<xs:fractionDigits value="2"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="fechaYHoraEstaMedicion" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar  la fecha y hora de esta medición.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:dateTime">
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="fechaYHoraMedicionAnterior" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar  la fecha y hora de la medición anterior.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:dateTime">
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="REC">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RECCabecera" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="folioUnicoRecepcion" type="xs:int" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el folio único de recepción controlado por la estación de servicio.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="claveProducto" type="controlesvolumetricos:t_claveProductos" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la clave del producto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="claveSubProducto" type="controlesvolumetricos:t_subproductos" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la clave del subproducto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="composicionOctanajeDeGasolina" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el índice de octano de la gasolina.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="87"/>
+												<xs:maxInclusive value="99"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="gasolinaConEtanol" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar si la gasolina contiene etanol.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Sí"/>
+												<xs:enumeration value="No"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="composicionDeEtanolEnGasolina" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el porcentaje de etanol contenido en la gasolina.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:fractionDigits value="2"/>
+												<xs:minInclusive value="0"/>
+												<xs:maxInclusive value="10"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="otros" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el tipo de combustible cuando en el atributo claveSubProducto se indique el valor otros.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="marca" type="controlesvolumetricos:t_claveMarca" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo opcional para expresar la marca del subproducto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="folioUnicoRelacion" type="xs:int" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el folio único de recepción controlado por la estación de servicio.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RECDetalle" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="folioUnicoRecepcion" type="xs:int" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el folio único de recepción controlado por la estación de servicio.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="numeroDeTanque" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el número de identificación del tanque.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="1"/>
+												<xs:maxInclusive value="99"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="volumenInicialTanque" type="xs:unsignedInt" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el volumen inicial antes de recepción del producto (cantidad expresada en litros).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="volumenFinalTanque" type="xs:unsignedInt" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el volumen final después de recepción del producto (cantidad expresada en litros).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="volumenRecepcion" type="xs:unsignedInt" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la cantidad de producto recibido (cantidad expresada en litros).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="temperatura" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la temperatura del tanque al final de la recepción (cantidad expresada en grados centígrados).</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:maxInclusive value="70.00"/>
+												<xs:minInclusive value="-40.00"/>
+												<xs:fractionDigits value="2"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="fechaYHoraRecepcion" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la fecha y hora de la recepción.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:dateTime">
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="folioUnicoRelacion" type="xs:int" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el folio único de recepción controlado por la estación de servicio que corresponde a su cabecera.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RECDocumentos" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="folioUnicoRecepcion" type="xs:int" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el folio único de recepción controlado por la estación de servicio.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="terminalAlmacenamientoYDistribucion" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo opcional para especificar la terminal de almacenamiento y distribución de embarque del producto o distribuidor autorizado.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="[0-9]{3}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="permisoAlmacenamientoYDistribucion" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el número de permiso otorgado por la CRE a la terminal de almacenamiento o distribución de embarque del producto o distribuidor autorizado,  cuando el proveedor es nacional.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="tipoDocumento" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el tipo de documento que ampara la recepción. string (con formato CP cuando se trate de compra de producto, RP de remisión de producto o PC de producto en consignación).</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="CP">
+													<xs:annotation>
+														<xs:documentation>Cuando se trate de compra de producto.</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="RP">
+													<xs:annotation>
+														<xs:documentation>Remisión de Producto.</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="PC">
+													<xs:annotation>
+														<xs:documentation>Producto en consignación.</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="fechaDocumento" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la fecha y hora de la recepción.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:dateTime">
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="folioDocumentoRecepcion" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el folio de documento que ampara la recepción.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="36"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="volumenDocumentado" type="xs:unsignedInt" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el volumen comprado según CFDI del proveedor del combustible  (cantidad expresada en litros).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="precioCompra" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el precio neto del producto recibido (cantidad expresada en pesos por litro, con descuento incluido, con impuestos y sin flete, debiendo corresponder con el monto expresado en CFDI).</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:maxInclusive value="99.99"/>
+												<xs:minInclusive value="0"/>
+												<xs:fractionDigits value="2"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="permisoTransporte" type="xs:string" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el número de permiso otorgado por la CRE a la persona moral o física con el cual se realiza la transportación del producto hacia la estación de servicio.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="claveVehiculo" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para especificar  clave del vehículo (número económico o en su defecto número de placa).</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="11"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="folioUnicoRelacion" type="xs:int" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el folio único de recepción controlado por la estación de servicio que corresponde a su cabecera.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="tipoProveedor" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar si el proveedor del producto es nacional o extranjero.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Nacional"/>
+												<xs:enumeration value="Extranjero"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="permisoImportacion" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el permiso de importación de la estación de servicio, cuando el proveedor tenga el carácter de extranjero.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="rfcProveedor" type="controlesvolumetricos:t_RFC" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar la clave en el RFC de la persona física o moral que comercializó el producto con la estación de servicio, cuando el proveedor es nacional.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="nombreProveedor" type="xs:string" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el nombre, denominación o razón social de la persona física o moral que comercializó el producto con la estación de servicio.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="permisoProveedor" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el número de permiso de Comercialización o Distribución otorgado por la CRE a la persona moral o física con la cual se realizó la transacción del producto hacia la estación de servicio, cuando el proveedor es nacional.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="totalRecepciones" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el total de recepciones en la estación de servicio.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="totalDocumentos" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el total de documentos que amparen la recepción.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VTA">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VTACabecera" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="numeroTotalRegistrosDetalle" type="xs:int" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para registrar el número total de registros de ventas correspondiente al dispensario y manguera que se reportan en este elemento.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="numeroDispensario" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el número de identificación del dispensario.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="1"/>
+												<xs:maxInclusive value="99"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="identificadorManguera" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el número identificador de la manguera.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="1"/>
+												<xs:maxInclusive value="6"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="claveProducto" type="controlesvolumetricos:t_claveProductos" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la clave del producto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="claveSubProducto" type="controlesvolumetricos:t_subproductos" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la clave del subproducto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="composicionOctanajeDeGasolina" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el índice de octano de la gasolina.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="87"/>
+												<xs:maxInclusive value="99"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="gasolinaConEtanol" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar si la gasolina contiene etanol.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Sí"/>
+												<xs:enumeration value="No"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="composicionDeEtanolEnGasolina" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el porcentaje de etanol contenido en la gasolina.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:fractionDigits value="2"/>
+												<xs:minInclusive value="0"/>
+												<xs:maxInclusive value="10"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="otros" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el tipo de combustible cuando en el atributo claveSubProducto se indique el valor otros.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="marca" type="controlesvolumetricos:t_claveMarca" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo opcional para expresar la marca del subproducto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="sumatoriaVolumenDespachado" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la sumatoria del volumen despachado en las ventas.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:totalDigits value="12"/>
+												<xs:fractionDigits value="3"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="sumatoriaVentas" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la sumatoria de los importes totales de las transacciones de venta.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:totalDigits value="13"/>
+												<xs:fractionDigits value="3"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="VTADetalle" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="tipoDeRegistro" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el tipo de registro por transacción de venta. string (con formato “D” tratándose de ventas, “J” en el caso de jarreos realizados por la Procuraduría Federal del Consumidor, la CRE o la autoridad competente, UVAS o laboratorios móviles, “A” tratándose de auto-jarreos y “N” tratándose de producto en consignación).</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="D">
+													<xs:annotation>
+														<xs:documentation>Ventas.</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="J">
+													<xs:annotation>
+														<xs:documentation>Jarreos por la PFC, la CRE o autoridad competente, UVAS o laboratorios móviles.</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="A">
+													<xs:annotation>
+														<xs:documentation>Tratándose de autojarreos.</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="N">
+													<xs:annotation>
+														<xs:documentation>Productos en consignación.</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="numeroUnicoTransaccionVenta" type="xs:unsignedInt" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para identificar la transacción por numero único de venta.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="numeroDispensario" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el número de identificación del dispensario.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="1"/>
+												<xs:maxInclusive value="99"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="identificadorManguera" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el número identificador de la manguera.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="1"/>
+												<xs:maxInclusive value="6"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="claveProducto" type="controlesvolumetricos:t_claveProductos" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la clave del producto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="claveSubProducto" type="controlesvolumetricos:t_subproductos" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la clave del subproducto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="composicionOctanajeDeGasolina" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el índice de octano de la gasolina.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="87"/>
+												<xs:maxInclusive value="99"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="gasolinaConEtanol" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar si la gasolina contiene etanol.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Sí"/>
+												<xs:enumeration value="No"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="composicionDeEtanolEnGasolina" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el porcentaje de etanol contenido en la gasolina.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:fractionDigits value="2"/>
+												<xs:minInclusive value="0"/>
+												<xs:maxInclusive value="10"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="otros" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo condicional para expresar el tipo de combustible cuando en el atributo claveSubProducto se indique el valor otros.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="marca" type="controlesvolumetricos:t_claveMarca" use="optional">
+										<xs:annotation>
+											<xs:documentation>Atributo opcional para expresar la marca del subproducto.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="volumenDespachado" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el volumen despachado por transacción en las ventas.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:maxInclusive value="999999.999"/>
+												<xs:minInclusive value="0"/>
+												<xs:fractionDigits value="3"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="precioUnitarioProducto" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el precio por litro del producto en venta, debiendo corresponder al precio contenido en el comprobante fiscal.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:maxInclusive value="99.99"/>
+												<xs:minInclusive value="0"/>
+												<xs:fractionDigits value="2"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="importeTotalTransaccion" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar el importe total de transacción de esta venta.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:maxInclusive value="9999999999.999"/>
+												<xs:minInclusive value="0"/>
+												<xs:fractionDigits value="3"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="fechaYHoraTransaccionVenta" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo requerido para expresar la fecha y hora de la transacción de venta.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:dateTime">
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="numTotalRegistrosDetalle" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el número total de registros que se incluirán en el detalle para todas las mangueras y dispensarios.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="0"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TQS" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="numeroTanque" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el número de identificación del tanque.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="1"/>
+									<xs:maxInclusive value="99"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="claveProducto" type="controlesvolumetricos:t_claveProductos" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la clave del producto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="claveSubProducto" type="controlesvolumetricos:t_subproductos" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la clave del subproducto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="composicionOctanajeDeGasolina" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el índice de octano de la gasolina.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="87"/>
+									<xs:maxInclusive value="99"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="gasolinaConEtanol" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar si la gasolina contiene etanol.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Sí"/>
+									<xs:enumeration value="No"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="composicionDeEtanolEnGasolina" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el porcentaje de etanol contenido en  la gasolina.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:fractionDigits value="2"/>
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="10"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="otros" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el tipo de combustible cuando en el atributo claveSubProducto se indique el valor otros.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="marca" type="controlesvolumetricos:t_claveMarca" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo opcional para expresar la marca del subproducto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="capacidadTotalTanque" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la capacidad total del tanque (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="capacidadOperativaTanque" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la capacidad operativa del tanque (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="capacidadUtilTanque" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la capacidad útil del tanque (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="capacidadFondajeTanque" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la capacidad fondaje del tanque (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="volumenMinimoOperacion" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el volumen mínimo de operación del tanque (cantidad expresada en litros).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="estadoTanque" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para indicar el estado del tanque. string ( O - en operación,  F - fuera de operación).</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="O">
+										<xs:annotation>
+											<xs:documentation>En Operación.</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="F">
+										<xs:annotation>
+											<xs:documentation>Fuera de Operación.</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DIS" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="numeroDispensario" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el número de identificación del dispensario.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="1"/>
+									<xs:maxInclusive value="99"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="identificadorManguera" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar el número identificador de la manguera.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="1"/>
+									<xs:maxInclusive value="6"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="claveProducto" type="controlesvolumetricos:t_claveProductos" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la clave del producto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="claveSubProducto" type="controlesvolumetricos:t_subproductos" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para expresar la clave del subproducto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="composicionOctanajeDeGasolina" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el índice de octano de la gasolina.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="87"/>
+									<xs:maxInclusive value="99"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="gasolinaConEtanol" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar si la gasolina contiene etanol.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Sí"/>
+									<xs:enumeration value="No"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="composicionDeEtanolEnGasolina" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el porcentaje de etanol contenido en la gasolina.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:fractionDigits value="2"/>
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="10"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="otros" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo condicional para expresar el tipo de combustible cuando en el atributo claveSubProducto se indique el valor otros.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="marca" type="controlesvolumetricos:t_claveMarca" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo opcional para expresar la marca del subproducto.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:string" use="required" fixed="1.2">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para la expresión de la versión del esquema.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rfc" type="controlesvolumetricos:t_RFC" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para expresar el RFC de la persona física o moral que enajene gasolinas o diésel, en establecimientos abiertos al público en general.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rfcProveedorSw" type="controlesvolumetricos:t_RFC" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para expresar el RFC del proveedor del software de controles volumétricos de la estación de servicio.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="numeroPermisoCRE" type="controlesvolumetricos:t_permiso" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para expresar el número de permiso otorgado por la Comisión Reguladora de Energía (CRE) a la estación de servicio para el expendio de combustible.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="sello" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para contener el sello digital de la información de controles volumétricos. El sello deberá ser expresado como una cadena de texto en formato Base 64.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="noCertificado" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para expresar el número de serie del certificado de sello digital que ampara la información de controles volumétricos, de acuerdo al acuse correspondiente a 20 posiciones otorgado por el SAT.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="20"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="certificado" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido que sirve para expresar el certificado de sello digital que ampara al comprobante como texto, en formato base 64.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="fechaYHoraCorte" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para expresar la fecha a la que corresponde la información reportada.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:dateTime">
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="t_RFC">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar claves del Registro Federal de Contribuyentes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="12"/>
+			<xs:maxLength value="13"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[A-ZÑ&amp;]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z0-9]?[A-Z0-9]?[0-9A-Z]?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_claveProductos">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para los productos (03 – Diésel, 07 – Gasolina, 16 – Bioenergético).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_subproductos">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para la marca de los subproductos (1 – Gasolina menor a 92 octanos, 2 – Gasolina mayor o igual a 92 octanos, 3 – Diésel, 4 – Diésel marino, 5 – Otros, 6 – Biodiesel).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_permiso">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar el número de permiso CRE.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="16"/>
+			<xs:maxLength value="24"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[PL]{2}[/]{1}[0-9]{1,6}[/]{1}[EXP]{3}[/]{1}[ES]{2}[/]{1}([MM]{2}[/]{1})?[0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_claveMarca">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para la clave de las marcas.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="13"/>
+			<xs:enumeration value="14"/>
+			<xs:enumeration value="15"/>
+			<xs:enumeration value="16"/>
+			<xs:enumeration value="17"/>
+			<xs:enumeration value="18"/>
+			<xs:enumeration value="19"/>
+			<xs:enumeration value="20"/>
+			<xs:enumeration value="21"/>
+			<xs:enumeration value="22"/>
+			<xs:enumeration value="23"/>
+			<xs:enumeration value="24"/>
+			<xs:enumeration value="25"/>
+			<xs:enumeration value="26"/>
+			<xs:enumeration value="27"/>
+			<xs:enumeration value="28"/>
+			<xs:enumeration value="29"/>
+			<xs:enumeration value="30"/>
+			<xs:enumeration value="31"/>
+			<xs:enumeration value="32"/>
+			<xs:enumeration value="33"/>
+			<xs:enumeration value="34"/>
+			<xs:enumeration value="35"/>
+			<xs:enumeration value="36"/>
+			<xs:enumeration value="37"/>
+			<xs:enumeration value="38"/>
+			<xs:enumeration value="39"/>
+			<xs:enumeration value="40"/>
+			<xs:enumeration value="41"/>
+			<xs:enumeration value="42"/>
+			<xs:enumeration value="43"/>
+			<xs:enumeration value="44"/>
+			<xs:enumeration value="45"/>
+			<xs:enumeration value="46"/>
+			<xs:enumeration value="47"/>
+			<xs:enumeration value="48"/>
+			<xs:enumeration value="49"/>
+			<xs:enumeration value="50"/>
+			<xs:enumeration value="51"/>
+			<xs:enumeration value="52"/>
+			<xs:enumeration value="53"/>
+			<xs:enumeration value="54"/>
+			<xs:enumeration value="55"/>
+			<xs:enumeration value="56"/>
+			<xs:enumeration value="57"/>
+			<xs:enumeration value="58"/>
+			<xs:enumeration value="59"/>
+			<xs:enumeration value="60"/>
+			<xs:enumeration value="61"/>
+			<xs:enumeration value="62"/>
+			<xs:enumeration value="63"/>
+			<xs:enumeration value="64"/>
+			<xs:enumeration value="65"/>
+			<xs:enumeration value="66"/>
+			<xs:enumeration value="67"/>
+			<xs:enumeration value="68"/>
+			<xs:enumeration value="69"/>
+			<xs:enumeration value="70"/>
+			<xs:enumeration value="71"/>
+			<xs:enumeration value="72"/>
+			<xs:enumeration value="73"/>
+			<xs:enumeration value="74"/>
+			<xs:enumeration value="75"/>
+			<xs:enumeration value="76"/>
+			<xs:enumeration value="77"/>
+			<xs:enumeration value="78"/>
+			<xs:enumeration value="79"/>
+			<xs:enumeration value="80"/>
+			<xs:enumeration value="81"/>
+			<xs:enumeration value="82"/>
+			<xs:enumeration value="83"/>
+			<xs:enumeration value="84"/>
+			<xs:enumeration value="85"/>
+			<xs:enumeration value="86"/>
+			<xs:enumeration value="87"/>
+			<xs:enumeration value="88"/>
+			<xs:enumeration value="89"/>
+			<xs:enumeration value="90"/>
+			<xs:enumeration value="91"/>
+			<xs:enumeration value="92"/>
+			<xs:enumeration value="93"/>
+			<xs:enumeration value="94"/>
+			<xs:enumeration value="95"/>
+			<xs:enumeration value="96"/>
+			<xs:enumeration value="97"/>
+			<xs:enumeration value="98"/>
+			<xs:enumeration value="99"/>
+			<xs:enumeration value="100"/>
+			<xs:enumeration value="101"/>
+			<xs:enumeration value="102"/>
+			<xs:enumeration value="103"/>
+			<xs:enumeration value="104"/>
+			<xs:enumeration value="105"/>
+			<xs:enumeration value="106"/>
+			<xs:enumeration value="107"/>
+			<xs:enumeration value="108"/>
+			<xs:enumeration value="109"/>
+			<xs:enumeration value="110"/>
+			<xs:enumeration value="111"/>
+			<xs:enumeration value="112"/>
+			<xs:enumeration value="113"/>
+			<xs:enumeration value="114"/>
+			<xs:enumeration value="115"/>
+			<xs:enumeration value="116"/>
+			<xs:enumeration value="117"/>
+			<xs:enumeration value="118"/>
+			<xs:enumeration value="119"/>
+			<xs:enumeration value="120"/>
+			<xs:enumeration value="121"/>
+			<xs:enumeration value="122"/>
+			<xs:enumeration value="123"/>
+			<xs:enumeration value="124"/>
+			<xs:enumeration value="125"/>
+			<xs:enumeration value="126"/>
+			<xs:enumeration value="127"/>
+			<xs:enumeration value="128"/>
+			<xs:enumeration value="129"/>
+			<xs:enumeration value="130"/>
+			<xs:enumeration value="131"/>
+			<xs:enumeration value="132"/>
+			<xs:enumeration value="133"/>
+			<xs:enumeration value="134"/>
+			<xs:enumeration value="135"/>
+			<xs:enumeration value="136"/>
+			<xs:enumeration value="137"/>
+			<xs:enumeration value="138"/>
+			<xs:enumeration value="139"/>
+			<xs:enumeration value="140"/>
+			<xs:enumeration value="141"/>
+			<xs:enumeration value="142"/>
+			<xs:enumeration value="143"/>
+			<xs:enumeration value="144"/>
+			<xs:enumeration value="145"/>
+			<xs:enumeration value="146"/>
+			<xs:enumeration value="147"/>
+			<xs:enumeration value="148"/>
+			<xs:enumeration value="149"/>
+			<xs:enumeration value="150"/>
+			<xs:enumeration value="151"/>
+			<xs:enumeration value="152"/>
+			<xs:enumeration value="153"/>
+			<xs:enumeration value="154"/>
+			<xs:enumeration value="155"/>
+			<xs:enumeration value="156"/>
+			<xs:enumeration value="157"/>
+			<xs:enumeration value="158"/>
+			<xs:enumeration value="159"/>
+			<xs:enumeration value="160"/>
+			<xs:enumeration value="161"/>
+			<xs:enumeration value="162"/>
+			<xs:enumeration value="163"/>
+			<xs:enumeration value="164"/>
+			<xs:enumeration value="165"/>
+			<xs:enumeration value="166"/>
+			<xs:enumeration value="167"/>
+			<xs:enumeration value="168"/>
+			<xs:enumeration value="169"/>
+			<xs:enumeration value="170"/>
+			<xs:enumeration value="171"/>
+			<xs:enumeration value="172"/>
+			<xs:enumeration value="173"/>
+			<xs:enumeration value="174"/>
+			<xs:enumeration value="175"/>
+			<xs:enumeration value="176"/>
+			<xs:enumeration value="177"/>
+			<xs:enumeration value="178"/>
+			<xs:enumeration value="179"/>
+			<xs:enumeration value="180"/>
+			<xs:enumeration value="181"/>
+			<xs:enumeration value="182"/>
+			<xs:enumeration value="183"/>
+			<xs:enumeration value="184"/>
+			<xs:enumeration value="185"/>
+			<xs:enumeration value="186"/>
+			<xs:enumeration value="187"/>
+			<xs:enumeration value="188"/>
+			<xs:enumeration value="189"/>
+			<xs:enumeration value="190"/>
+			<xs:enumeration value="191"/>
+			<xs:enumeration value="192"/>
+			<xs:enumeration value="193"/>
+			<xs:enumeration value="194"/>
+			<xs:enumeration value="195"/>
+			<xs:enumeration value="196"/>
+			<xs:enumeration value="197"/>
+			<xs:enumeration value="198"/>
+			<xs:enumeration value="199"/>
+			<xs:enumeration value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

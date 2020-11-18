@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SYE.Covol.BI", "SYE.Covol.BI\SYE.Covol.BI.csproj", "{A61D51E4-2353-4D8C-BD9F-39DE854F231B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SYE.Covol.PI", "SYE.Covol.PI\SYE.Covol.PI.csproj", "{EEDAAB20-1089-4E42-998E-56315535AEB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCore", "WebApiCore\WebApiCore.csproj", "{F687146F-9208-4EF6-9923-3D2C6187F5A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SYE.Covol.DAO", "SYE.Covol.DAO\SYE.Covol.DAO.csproj", "{5E1EEB20-AE73-4E83-BF37-1B1AC3C01732}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCoreTest", "WebApiCoreTest\WebApiCoreTest.csproj", "{4DE425E0-3F63-4C31-8CF1-6961C74AE13A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestWebapi", "XUnitTestWebapi\XUnitTestWebapi.csproj", "{EFCD6838-7259-48A7-B5B7-787F783B6BAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A61D51E4-2353-4D8C-BD9F-39DE854F231B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61D51E4-2353-4D8C-BD9F-39DE854F231B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61D51E4-2353-4D8C-BD9F-39DE854F231B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61D51E4-2353-4D8C-BD9F-39DE854F231B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEDAAB20-1089-4E42-998E-56315535AEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDAAB20-1089-4E42-998E-56315535AEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDAAB20-1089-4E42-998E-56315535AEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDAAB20-1089-4E42-998E-56315535AEB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F687146F-9208-4EF6-9923-3D2C6187F5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F687146F-9208-4EF6-9923-3D2C6187F5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F687146F-9208-4EF6-9923-3D2C6187F5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F687146F-9208-4EF6-9923-3D2C6187F5A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1EEB20-AE73-4E83-BF37-1B1AC3C01732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1EEB20-AE73-4E83-BF37-1B1AC3C01732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E1EEB20-AE73-4E83-BF37-1B1AC3C01732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1EEB20-AE73-4E83-BF37-1B1AC3C01732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE425E0-3F63-4C31-8CF1-6961C74AE13A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE425E0-3F63-4C31-8CF1-6961C74AE13A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE425E0-3F63-4C31-8CF1-6961C74AE13A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE425E0-3F63-4C31-8CF1-6961C74AE13A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFCD6838-7259-48A7-B5B7-787F783B6BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFCD6838-7259-48A7-B5B7-787F783B6BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFCD6838-7259-48A7-B5B7-787F783B6BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFCD6838-7259-48A7-B5B7-787F783B6BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80D8FF3C-C531-4B69-B7FD-B14E21DEA631}
+	EndGlobalSection
+EndGlobal
